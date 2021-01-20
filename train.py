@@ -55,8 +55,10 @@ def main():
 
     run.log("Regularization Strength:", np.float(args.C))
     run.log("Max iterations:", np.int(args.max_iter))
-    hype_loc = "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv"
-    ds = TabularDatasetFactory.from_delimited_files(path=hype_loc)
+    run.log("Max iterations:", np.str(args.penalty))
+    hype_loc = "https://raw.githubusercontent.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/main/online_shoppers_intention.csv"
+    data = TabularDatasetFactory.from_delimited_files(path=hype_loc)
+    ds = data.to_pandas_dataframe()
     x, y = clean_data(ds)
     # TODO: Split data into train and test sets.
     x_train, x_test, y_train, y_test = train_test_split(x,y, test_size=0.30, random_state=10)
