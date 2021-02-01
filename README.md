@@ -7,7 +7,12 @@ In this project we will be using Jupyter Notebook from traing to deployment inst
   
 ## Project Set Up and Installation  
   
-For setup and installing dependencies please see [Enviornment file details](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/tree/main/Enviorment_Dependencies)  
+For setup and installing dependencies please see [Enviornment file details](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/tree/main/Enviorment_Dependencies)       
+   
+**Compute Cluster**    
+    
+![Compute Cluster](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/compute_cluster.png)        
+    
   
 **Note :** I was having trouble in retrieving the trained AutoMl model due to differences in SDK version. So, before running the notebooks please run the script 
 [update_azure_SDK](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/scripts/update_azure_SDK.ksh) to make the SDK version `1.20.0`. Please restart the kernel after running the script.   
@@ -21,7 +26,11 @@ Data is taken from **Kaggle**
 I have uploaded the data to the GitHub repository. link to the [data](https://raw.githubusercontent.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/main/online_shoppers_intention.csv).  
 Data consists of various Information related to customer behavior in online shopping websites. It helps us to perform Marketing Analytics.  
 We will try to predict if shopper will generate Revenue or not from the data.  
-
+    
+**Registered Dataset**     
+    
+![Registered Dataset](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/registered_dataset.png)       
+      
 ### Attribute Information   
   
 The dataset consists of 10 numerical and 8 categorical attributes.  
@@ -38,7 +47,7 @@ The `Revenue` attribute is used as the class label.
    
 **4.** The dataset also includes operating system, browser, region, traffic type, visitor type as returning or new visitor, a Boolean value indicating whether the date of the visit is weekend, and month of the year.    
   
-TODO: Get data.
+TODO: Get data.   
 We used method `from_delimited_files('URL')` from `TabularDatasetFactory` Class to retreive data from the csv file.[csv_file_link](https://raw.githubusercontent.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/main/online_shoppers_intention.csv).    
   
 
@@ -59,6 +68,12 @@ We uploaded this data to the workspace and accessed using the `dataset = Dataset
 ![Registered Dataset](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/registered_dataset.png)    
   
 ## Automated ML
+     
+[Automl Jupyter Notebook](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/automl.ipynb)     
+     
+Completed the AutoML experiment.    
+    
+![Automlexpcmp](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/automl_cmplt_exp.png)    
   
 **AutoML Settings**  
   
@@ -82,15 +97,28 @@ We uploaded this data to the workspace and accessed using the `dataset = Dataset
   
   
 ### Results
-The algorithm with the best performance during the tests was "VotingEnsemble" with a score of 0.90697.  
-![RunDetailesWidget](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/automl_rundetails.png)  
-![Rundetails2](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/automl_rundetails2.png)  
-  
-Screenshot of the best model trained with it's parameters.
-![fittedmodel](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/automl_bestmodel_1.png)  
-  
-## Hyperparameter Tuning
+The algorithm with the best performance during the tests was "VotingEnsemble" with a score of 0.90697.       
     
+**RunDetails**      
+     
+![RunDetailesWidget](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/automl_rundetails.png)      
+![Rundetails2](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/automl_rundetails2.png)        
+              
+Screenshot of the best model trained with it's parameters.               
+         
+![fittedmodel](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/automl_bestmodel_1.png)    
+     
+    
+    
+  
+## Hyperparameter Tuning      
+    
+[HyperDrive Jupyter Notebook](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/hyperparameter_tuning.ipynb)        
+    
+Completed HyperDrive Experiment.    
+    
+![hyperdrive exp cmp](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/hyperdrive_experiment_cmp.png)     
+        
 We used scikit learn Logistic Regrssion algorithm for the predicion as this task is about Classification. We created train.py script to do that.  
 [train.py](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/scripts/train.py)    
 This script accepts three arguments.  
@@ -112,20 +140,111 @@ This script accepts three arguments.
        [For more Details on Bandit Policy](https://azure.github.io/azureml-sdk-for-r/reference/bandit_policy.html)
 
 
-### Results
-*TODO*: What are the results you got with your model? What were the parameters of the model? How could you have improved it?
-The best Logistic Regrestion HyperDrive model was found with *['--C', '4', '--max_iter', '150', '--penalty', 'l2']* for accuracy **0.878345**
+### Results  
+The best Logistic Regrestion HyperDrive model with **accuracy 0.878345**  was found with below parametrs.     
+For more details regarding the [parameters](#hyperparameter-tuning)     
+|Parameter|Value
+|---------|-----
+|--C|4
+|--max_iter|150
+|--penalty|l2   
 
-*TODO* Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
+  
+![Rundetails](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/hyperdrive_rundetails.png)  
+   
+![hyperdrive exp completed](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/hyperdrive_experiment_cmp.png)  
+     
+**Registering the Hyper Drive Model**       
+     
+![HyperDrivereg](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/hyperdrive_register_model.png)   
 
-## Model Deployment
-*TODO*: Give an overview of the deployed model and instructions on how to query the endpoint with a sample input.
-
+    
+## Model Deployment   
+**Registered the best models from Hyperdrive and AutoML**     
+     
+![Models](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/registerd_models.png)         
+    
+*TODO*: Give an overview of the deployed model and instructions on how to query the endpoint with a sample input.    
+We can deploy a model using ACI(Azure container Instance),AKS(Azure Kubernatics Service) and local webservice with CPU/GPu based on our needs of processing the requests.   
+We will be deploying the model created by AutoMl as the accuracy for automl model is greater than Hyperdrive model which is **3%** more i.e. **0.90**.  
+    
+For Deploying we will need below files.   
+* Enviornment dependecies file. [link](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/Enviorment_Dependencies/envFile.yml)    
+* Scoring script. [score.py](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/scripts/score.py)    
+  
+We can download the above files using below code.   
+```
+# Download scoring file 
+automl_best_run.download_file('outputs/scoring_file_v_1_0_0.py', 'score.py')
+# Download environment file
+automl_best_run.download_file('outputs/conda_env_v_1_0_0.yml', 'envFile.yml')
+automl_best_run.download_file('outputs/env_dependencies.json', 'envDependencies.json')
+```
+  
+**Note :**  In `score.py` please add the `outputs` as shown in path as shown in below code after downloading.  
+  `model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'outputs','model.pkl')`     
+      
+For this project I have used ACI with `cpu_cores = 1, memory_gb = 4`.Also, enabled `app insights and key based authorization.`      
+    
+![notebook deploy](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/deploying_notebook.png)  
+      
+**Deployed Model Status**       
+     
+![Model status](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/deployed_model_status.png)    
+    
+**Deployed Model**         
+     
+![Deployed model](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/deployed_model.png)     
+      
+**Enabled Application Insights**      
+     
+![App insights](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/deployed_model_application_insights_true.png)    
+     
+**Enabled Key Based Authentication**          
+      
+![Authentication](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/deployed_model_key_based.png)     
+    
+**To Query the Endpoint**    
+    
+We need to create the sample data. I created sample data with 10 records as jason file. As shown in below code block.  `df` is dataframe created from the dataset.  
+```
+import json
+test_df = df.sample(10) 
+test_df_label = test_df.pop('Revenue')
+test_data = json.dumps({'data': test_df.to_dict(orient='records')})
+```
+   
+We have enabled key based authentication. We will get the key fom the model and send the POST request as shown in below code block.  
+```
+import requests                           # to send the POST request
+key = 'ujlbv7heiX5PQE2ksMl1lE7uIaPsyhHW'  # key of the model for authorization
+headers = {'Content-type': 'application/json'}  # we are using json type content
+headers['Authorization'] = f'Bearer {key}'      # adding key
+response = requests.post(service.scoring_uri, test_data, headers=headers)  #sending the responsse to the endpoint
+print(response)  # printing the received response
+```
+**      
+  
+**
+      
+## deleting the Service and Cluster   
+   
+![Delete](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/deleting_service_cluster.png)      
+      
 ## Screen Recording
 *TODO* Provide a link to a screen recording of the project in action. Remember that the screencast should demonstrate:
 - A working model
 - Demo of the deployed  model
 - Demo of a sample request sent to the endpoint and its response
 
-## Standout Suggestions
-*TODO (Optional):* This is where you can provide information about any standout suggestions that you have attempted.
+## Standout Suggestions   
+*TODO (Optional):* This is where you can provide information about any standout suggestions that you have attempted.    
+I have enabled the application insights for logging. Find the screenshots below.     
+  
+**Enabled Application Insights**      
+     
+![App insights](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/deployed_model_application_insights_true.png)   
+    
+**Application Insights link working**   
+![appliacation insight link](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/app_insight_link.png)  
+   
