@@ -3,7 +3,10 @@
 This is 3rd project part of the Udacity Azure ML Nanodegree. In this project, we will use the external dataset which is not present in azure machine learning studio.  
 We will be using HyperDrive to tune the hyperparameters of scikit learn algorithm to create best model and Azure AutoML to find the best model. We will compare the both the models and deploy the best model to Azure Container Service as a REST endpoint with key based authentication. We will send the POST request to check Endpoint is working.  
 In this project we will be using Jupyter Notebook from traing to deployment instead of Azure ML Studio as it gives more flexibility.   
-  
+     
+## Architecture Diagram  
+    
+![Archi](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/project%203.png)    
   
 ## Project Set Up and Installation  
   
@@ -213,7 +216,10 @@ test_df = df.sample(10)
 test_df_label = test_df.pop('Revenue')
 test_data = json.dumps({'data': test_df.to_dict(orient='records')})
 ```
-   
+      
+![test data](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/test_data.png)          
+         
+                 
 We have enabled key based authentication. We will get the key fom the model and send the POST request as shown in below code block.  
 ```
 import requests                           # to send the POST request
@@ -223,20 +229,21 @@ headers['Authorization'] = f'Bearer {key}'      # adding key
 response = requests.post(service.scoring_uri, test_data, headers=headers)  #sending the responsse to the endpoint
 print(response)  # printing the received response
 ```
-**      
+**        
+![Response](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/response.png)     
   
 **
       
-## deleting the Service and Cluster   
+## Deleting the Service   
    
-![Delete](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/deleting_service_cluster.png)      
+![Delete](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/service.png)      
       
 ## Screen Recording
 *TODO* Provide a link to a screen recording of the project in action. Remember that the screencast should demonstrate:
 - A working model
 - Demo of the deployed  model
-- Demo of a sample request sent to the endpoint and its response
-
+- Demo of a sample request sent to the endpoint and its response       
+[YouTube Demo Link](https://youtu.be/q4agxTnaffs)
 ## Standout Suggestions   
 *TODO (Optional):* This is where you can provide information about any standout suggestions that you have attempted.    
 I have enabled the application insights for logging. Find the screenshots below.     
