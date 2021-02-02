@@ -101,7 +101,13 @@ Completed the AutoML experiment.
   
   
 ### Results
-The algorithm with the best performance during the tests was "VotingEnsemble" with a score of 0.9073.       
+The algorithm with the best performance during the tests was "VotingEnsemble" with a score of 0.9073.     
+      
+### Future Work    
+    
+1. We may increase the experiment timeout minutes to test more models.   
+2. We can include Deep Learning to see if it increases the primary metric. `enable_dnn=True`     
+3. We can use compute cluster of higher specification or GPU for faster training.   
     
 **RunDetails**      
      
@@ -160,7 +166,13 @@ For more details regarding the [parameters](#hyperparameter-tuning)
 |--max_iter|250
 |--penalty|l1   
 
-     
+       
+## Future Work   
+    
+1. We can try different termination policy like Median stopping policy based on running averages of primary metrics reported by the runs. This policy computes running averages across all training runs and terminates runs with primary metric values worse than the median of averages.     
+2. We can use [ScriptRunConfig](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) as **estimator** is deprecated now.   
+3. We can use different primary metric instead of accuracy like F1 score.    
+    
 **Hyperdrive run Log**    
     
 ![hyperdrive Run log](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/hyperdrive_run_log.png)    
