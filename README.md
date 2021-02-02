@@ -14,7 +14,7 @@ For setup and installing dependencies please see [Enviornment file details](http
    
 **Compute Cluster**    
     
-![Compute Cluster](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/compute_cluster.png)        
+![Compute Cluster](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/compute.png)        
     
   
 **Note :** I was having trouble in retrieving the trained AutoMl model due to differences in SDK version. So, before running the notebooks please run the script 
@@ -32,7 +32,7 @@ We will try to predict if shopper will generate Revenue or not from the data.
     
 **Registered Dataset**     
     
-![Registered Dataset](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/registered_dataset.png)       
+![Registered Dataset](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/registered%20datset.png)       
       
 ### Attribute Information   
   
@@ -68,7 +68,7 @@ We used method `from_delimited_files('URL')` from `TabularDatasetFactory` Class 
 `URL : (https://raw.githubusercontent.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/main/online_shoppers_intention.csv).    `    
 We uploaded this data to the workspace and accessed using the `dataset = Dataset.get_by_name(workspace=ws, name='online_shoppers_intention')` in automl.ipynb.  
   
-![Registered Dataset](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/registered_dataset.png)    
+![Registered Dataset](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/registered%20datset.png)    
   
 ## Automated ML
      
@@ -76,7 +76,7 @@ We uploaded this data to the workspace and accessed using the `dataset = Dataset
      
 Completed the AutoML experiment.    
     
-![Automlexpcmp](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/automl_cmplt_exp.png)    
+![Automlexpcmp](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/automl_exp_cmp_feb2.png)    
   
 **AutoML Settings**  
   
@@ -97,19 +97,27 @@ Completed the AutoML experiment.
 |enable_early_stopping|early stopping if we find the best model|True
 |featurization|featurization setting|auto
 |debug_log|name of the file to store the debug log|automl_errors.log
+|enable_onnx_compatible_model|Enabling the onnx compatibility|True
   
   
 ### Results
-The algorithm with the best performance during the tests was "VotingEnsemble" with a score of 0.90697.       
+The algorithm with the best performance during the tests was "VotingEnsemble" with a score of 0.9073.       
     
 **RunDetails**      
      
-![RunDetailesWidget](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/automl_rundetails.png)      
+![RunDetailesWidget](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/automl_run_details_2feb.png)      
 ![Rundetails2](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/automl_rundetails2.png)        
               
 Screenshot of the best model trained with it's parameters.               
          
-![fittedmodel](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/automl_bestmodel_1.png)    
+![fittedmodel](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/best_model_automl_feb2.png)        
+![fittedmodel2](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/best_model_automl_feb22.png)       
+    
+      
+Screenshot of best automl model run id    
+    
+![runid](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/automl_best_run_id.png)        
+  
      
     
     
@@ -120,7 +128,7 @@ Screenshot of the best model trained with it's parameters.
     
 Completed HyperDrive Experiment.    
     
-![hyperdrive exp cmp](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/hyperdrive_experiment_cmp.png)     
+![hyperdrive exp cmp](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/hyperdrive_exp_cmp_feb2.png)       
         
 We used scikit learn Logistic Regrssion algorithm for the predicion as this task is about Classification. We created train.py script to do that.  
 [train.py](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/scripts/train.py)    
@@ -148,24 +156,28 @@ The best Logistic Regrestion HyperDrive model with **accuracy 0.878345**  was fo
 For more details regarding the [parameters](#hyperparameter-tuning)     
 |Parameter|Value
 |---------|-----
-|--C|4
-|--max_iter|150
-|--penalty|l2   
+|--C|2
+|--max_iter|250
+|--penalty|l1   
 
-  
-![Rundetails](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/hyperdrive_rundetails.png)  
+     
+**Hyperdrive run Log**    
+    
+![hyperdrive Run log](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/hyperdrive_run_log.png)    
+     
+![Rundetails](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/hyperdrive_run_details_feb2.png)  
    
-![hyperdrive exp completed](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/hyperdrive_experiment_cmp.png)  
+![hyperdrive exp completed](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/hyperdrive_exp_cmp_feb2.png)        
      
 **Registering the Hyper Drive Model**       
      
-![HyperDrivereg](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/hyperdrive_register_model.png)   
+![HyperDrivereg](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/hyperdrive%20best%20model_feb2.png)       
 
     
 ## Model Deployment   
 **Registered the best models from Hyperdrive and AutoML**     
      
-![Models](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/registerd_models.png)         
+![Models](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/all_models_register.png)           
     
 *TODO*: Give an overview of the deployed model and instructions on how to query the endpoint with a sample input.    
 We can deploy a model using ACI(Azure container Instance),AKS(Azure Kubernatics Service) and local webservice with CPU/GPu based on our needs of processing the requests.   
@@ -191,21 +203,21 @@ For this project I have used ACI with `cpu_cores = 1, memory_gb = 4`.Also, enabl
     
 ![notebook deploy](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/deploying_notebook.png)  
       
-**Deployed Model Status**       
-     
-![Model status](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/deployed_model_status.png)    
+**Endpoint**       
+         
+![Model status](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/endpoint_feb2.png)    
     
 **Deployed Model**         
      
-![Deployed model](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/deployed_model.png)     
+![Deployed model](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/healthy_feb2.png)     
       
 **Enabled Application Insights**      
      
-![App insights](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/deployed_model_application_insights_true.png)    
+![App insights](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/app_insight_feb2.png)    
      
 **Enabled Key Based Authentication**          
       
-![Authentication](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/deployed_model_key_based.png)     
+![Authentication](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/key_based_feb2.png)     
     
 **To Query the Endpoint**    
     
@@ -234,9 +246,9 @@ print(response)  # printing the received response
   
 **
       
-## Deleting the Service   
+## Deleting the Service and Compute Cluster      
    
-![Delete](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/service.png)      
+![Delete](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/delete.png)      
       
 ## Screen Recording
 *TODO* Provide a link to a screen recording of the project in action. Remember that the screencast should demonstrate:
@@ -253,5 +265,9 @@ I have enabled the application insights for logging. Find the screenshots below.
 ![App insights](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/deployed_model_application_insights_true.png)   
     
 **Application Insights link working**   
-![appliacation insight link](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/app_insight_link.png)  
+![appliacation insight link](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/app_insight_link.png)      
+     
+**Retrieving Created ONNX model**    
+   
+![Onnx](https://github.com/Bhosalenileshn/ML-Azure-Udacity-Capstone-Project/blob/main/screenshots/onnx_model_retrieve.png)       
    
